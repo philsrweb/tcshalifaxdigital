@@ -16,8 +16,8 @@ import { errorMessages } from '../../../constants/messages';
 import Loading from '../UI/Loading';
 import Error from '../UI/Error';
 
-const RecipeView = ({
-  error, loading, recipes, recipeId,
+const ArticleView = ({
+  error, loading, articles, articleId,
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -25,57 +25,57 @@ const RecipeView = ({
   // Error
   if (error) return <Error content={error} />;
 
-  // Get this Recipe from all recipes
-  let recipe = null;
-  if (recipeId && recipes) {
-    recipe = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+  // Get this Article from all articles
+  let article = null;
+  if (articleId && articles) {
+    article = articles.find(item => parseInt(item.id, 10) === parseInt(articleId, 10));
   }
 
-  // Recipe not found
-  if (!recipe) return <Error content={errorMessages.recipe404} />;
+  // Article not found
+  if (!article) return <Error content={errorMessages.article404} />;
 
   // Build Ingredients listing
-  const ingredients = recipe.ingredients.map(item => (
+  const ingredients = article.ingredients.map(item => (
     <ListGroupItem key={`${item}`}>{item}</ListGroupItem>
   ));
 
   // Build Method listing
-  const method = recipe.method.map(item => (
+  const method = article.method.map(item => (
     <ListGroupItem key={`${item}`}>{item}</ListGroupItem>
   ));
 
   return (
     <div>
       <Helmet>
-        <title>{recipe.title}</title>
+        <title>{article.title}</title>
       </Helmet>
 
       <Row className="pt-4 pt-sm-0">
         <Col sm="12">
-          <h1>{recipe.title}</h1>
+          <h1>{article.title}</h1>
           <p>
             by
             {' '}
-            {recipe.author}
+            {article.author}
           </p>
         </Col>
       </Row>
       <Row>
-        <Col lg="4" className="recipe-view-card">
+        <Col lg="4" className="article-view-card">
           <Card>
-            <CardHeader>About this recipe</CardHeader>
+            <CardHeader>About this article</CardHeader>
             <CardBody>
-              <CardText>{recipe.body}</CardText>
+              <CardText>{article.body}</CardText>
             </CardBody>
           </Card>
         </Col>
-        <Col lg="4" className="recipe-view-card">
+        <Col lg="4" className="article-view-card">
           <Card>
             <CardHeader>Ingredients</CardHeader>
             <ListGroup className="list-group-flush">{ingredients}</ListGroup>
           </Card>
         </Col>
-        <Col lg="4" className="recipe-view-card">
+        <Col lg="4" className="article-view-card">
           <Card>
             <CardHeader>Method</CardHeader>
             <ListGroup className="list-group-flush">{method}</ListGroup>
@@ -84,7 +84,7 @@ const RecipeView = ({
       </Row>
       <Row className="pt-5 pb-3">
         <Col sm="12">
-          <Link className="btn btn-secondary" to="/recipes">
+          <Link className="btn btn-secondary" to="/articles">
             <i className="icon-arrow-left" />
             {' '}
             Back
@@ -95,15 +95,15 @@ const RecipeView = ({
   );
 };
 
-RecipeView.propTypes = {
+ArticleView.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  recipeId: PropTypes.string.isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  articleId: PropTypes.string.isRequired,
+  articles: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-RecipeView.defaultProps = {
+ArticleView.defaultProps = {
   error: null,
 };
 
-export default RecipeView;
+export default ArticleView;
