@@ -10,7 +10,7 @@ const About = () => (
       <Content padder>
         <Spacer size={30} />
         <H1>
-          Welcome to the Halifax Digital Conference!!!
+          Welcome to the Halifax Digital Conference!
         </H1>
         <Spacer size={10} />
         <Text>

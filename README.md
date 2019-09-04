@@ -2,7 +2,9 @@
 
 # Halifax Digital Conference Mobile App Starter Kit
 
-## #
+## A web / mobile application written in React Native to allow participants to play with their very
+
+## own mobile application.
 
 --------------------------------------------------------------------------------
 
