@@ -7,8 +7,6 @@ import {
   CardText,
   CardBody,
   CardHeader,
-  ListGroup,
-  ListGroupItem,
 } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
@@ -34,16 +32,6 @@ const ArticleView = ({
   // Article not found
   if (!article) return <Error content={errorMessages.article404} />;
 
-  // Build Ingredients listing
-  const ingredients = article.ingredients.map(item => (
-    <ListGroupItem key={`${item}`}>{item}</ListGroupItem>
-  ));
-
-  // Build Method listing
-  const method = article.method.map(item => (
-    <ListGroupItem key={`${item}`}>{item}</ListGroupItem>
-  ));
-
   return (
     <div>
       <Helmet>
@@ -61,24 +49,12 @@ const ArticleView = ({
         </Col>
       </Row>
       <Row>
-        <Col lg="4" className="article-view-card">
+        <Col lg="12" className="article-view-card">
           <Card>
             <CardHeader>About this article</CardHeader>
             <CardBody>
               <CardText>{article.body}</CardText>
             </CardBody>
-          </Card>
-        </Col>
-        <Col lg="4" className="article-view-card">
-          <Card>
-            <CardHeader>Ingredients</CardHeader>
-            <ListGroup className="list-group-flush">{ingredients}</ListGroup>
-          </Card>
-        </Col>
-        <Col lg="4" className="article-view-card">
-          <Card>
-            <CardHeader>Method</CardHeader>
-            <ListGroup className="list-group-flush">{method}</ListGroup>
           </Card>
         </Col>
       </Row>

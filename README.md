@@ -99,7 +99,7 @@ yarn install
 
 ```bash
 # Start the React Native packager
-yarn start
+yarn run native
 ```
 
 Instructions are shown in the command prompt. You can select to open it in:
